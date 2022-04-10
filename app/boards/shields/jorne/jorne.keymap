@@ -7,6 +7,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 #define DEF 0
 #define LWR 1
@@ -59,15 +61,15 @@
                 };
                 adjust_layer {
 // -----------------------------------------------------------------------------------------
-// | RST | BLDR |     |     |     |     |     |   |     |     |     |     |     | BLDR | RST |
-//       | BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
-//       |      |     |     |     |     |     |   |     |     |     |     |     |      |
-//                          |     |     |     |   |     |     |     |
+// | RST | BLDR   |       |       |       |       |       |   |     |     |     |     |     | BLDR | RST |
+//       | BTCLR  | BT0   | BT1   | BT2   | BT3   | BT4   |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
+//       | RGB_TOG|RGB_BRI|RGB_BRD|RGB_EFF|RGB_ERR|EXT_TOG|   |     |     |     |     |     |      |
+//                                |       |       |       |   |     |     |     |
                         bindings = <
-   &reset &bootloader  &none        &none        &none        &none        &none              &none        &none        &none        &none        &none         &bootloader &reset
-          &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-          &none        &none        &none        &none        &none        &none              &none        &none        &none        &none        &none         &none
-                                                                    &trans &none &trans   &trans &none &trans
+   &reset &bootloader      &none           &none           &none           &none           &none                 &none         &none            &none            &none            &none             &bootloader	   &reset
+          &bt BT_CLR       &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4          &bt BT_SEL 4  &bt BT_SEL 3     &bt BT_SEL 2     &bt BT_SEL 1     &bt BT_SEL 0      &bt BT_CLR
+          &rgb_ug RGB_TOG  &rgb_ug RGB_BRI &rgb_ug RGB_BRD &rgb_ug RGB_EFF &rgb_ug RGB_EFR &ext_power EP_TOG     &none         &none  &none  &none  &none   &none
+                                                                                      &trans &none &trans        &trans &none &trans
                         >;
                 };
         };
